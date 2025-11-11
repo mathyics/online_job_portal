@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>💼 Job Portal</h2>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li id="authLinks">
+                    <a href="login.html">Login</a>
+                    <a href="register.html" class="btn-primary">Sign Up</a>
+                </li>
+                <li id="userLinks" style="display: none;">
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="#" onclick="logout()" class="btn-secondary">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your Dream Job Today</h1>
+                <p>Connect with top employers and discover opportunities that match your skills</p>
+                <div class="hero-buttons">
+                    <a href="jobs.html" class="btn-large btn-primary">Browse Jobs</a>
+                    <a href="register.html" class="btn-large btn-outline">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Easy Job Search</h3>
+                    <p>Find jobs by category, location, and skills</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick Apply</h3>
+                    <p>Apply to multiple jobs with one click</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Perfect Match</h3>
+                    <p>Get matched with jobs that fit your profile</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Track Applications</h3>
+                    <p>Monitor your application status in real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Job Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

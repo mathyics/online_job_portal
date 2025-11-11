@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Job Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>💼 Job Portal</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="#" onclick="logout()" class="btn-secondary">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard-section">
+        <div class="container">
+            <h1>Dashboard</h1>
+            
+            <div id="jobseekerDashboard" style="display: none;">
+                <div class="dashboard-tabs">
+                    <button class="tab-btn active" onclick="showTab('profile')">Profile</button>
+                    <button class="tab-btn" onclick="showTab('applications')">My Applications</button>
+                </div>
+
+                <div id="profileTab" class="tab-content active">
+                    <div class="card">
+                        <h2>Job Seeker Profile</h2>
+                        <form id="profileForm" onsubmit="saveProfile(event)">
+                            <div class="form-group">
+                                <label for="skills">Skills (comma separated)</label>
+                                <input type="text" id="skills" name="skills" placeholder="JavaScript, React, Node.js">
+                            </div>
+                            <div class="form-group">
+                                <label for="education">Education</label>
+                                <textarea id="education" name="education" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="experience">Experience</label>
+                                <textarea id="experience" name="experience" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="resume_url">Resume URL</label>
+                                <input type="url" id="resume_url" name="resume_url">
+                            </div>
+                            <div class="form-group">
+                                <label for="preferred_location">Preferred Location</label>
+                                <input type="text" id="preferred_location" name="preferred_location">
+                            </div>
+                            <button type="submit" class="btn-primary">Save Profile</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="applicationsTab" class="tab-content">
+                    <div class="card">
+                        <h2>My Applications</h2>
+                        <div id="applicationsContainer">
+                            <div class="loading">Loading applications...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="employerDashboard" style="display: none;">
+                <div class="dashboard-tabs">
+                    <button class="tab-btn active" onclick="showTab('company')">Company Profile</button>
+                    <button class="tab-btn" onclick="showTab('postjob')">Post Job</button>
+                    <button class="tab-btn" onclick="showTab('myjobs')">My Jobs</button>
+                </div>
+
+                <div id="companyTab" class="tab-content active">
+                    <div class="card">
+                        <h2>Company Profile</h2>
+                        <form id="companyForm" onsubmit="saveCompanyProfile(event)">
+                            <div class="form-group">
+                                <label for="company_name">Company Name</label>
+                                <input type="text" id="company_name" name="company_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <input type="text" id="industry" name="industry">
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Website</label>
+                                <input type="url" id="website" name="website">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea id="address" name="address" rows="2"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="position_title">Your Position</label>
+                                <input type="text" id="position_title" name="position_title">
+                            </div>
+                            <button type="submit" class="btn-primary">Save Profile</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="postjobTab" class="tab-content">
+                    <div class="card">
+                        <h2>Post a New Job</h2>
+                        <form id="jobForm" onsubmit="postJob(event)">
+                            <div class="form-group">
+                                <label for="job_title">Job Title</label>
+                                <input type="text" id="job_title" name="title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="job_category">Category</label>
+                                <select id="job_category" name="category_id" required>
+                                    <option value="">Select Category</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="job_description">Description</label>
+                                <textarea id="job_description" name="description" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="skills_required">Skills Required</label>
+                                <input type="text" id="skills_required" name="skills_required" placeholder="JavaScript, React">
+                            </div>
+                            <div class="form-group">
+                                <label for="job_location">Location</label>
+                                <input type="text" id="job_location" name="location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="salary">Salary</label>
+                                <input type="text" id="salary" name="salary" placeholder="$50,000 - $70,000">
+                            </div>
+                            <div class="form-group">
+                                <label for="deadline">Application Deadline</label>
+                                <input type="date" id="deadline" name="deadline">
+                            </div>
+                            <button type="submit" class="btn-primary">Post Job</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="myjobsTab" class="tab-content">
+                    <div class="card">
+                        <h2>Posted Jobs</h2>
+                        <div id="myJobsContainer">
+                            <div class="loading">Loading jobs...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Job Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
